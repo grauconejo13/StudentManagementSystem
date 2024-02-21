@@ -1,0 +1,54 @@
+﻿<Window x:Class="StudentManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentManagementSystem"
+        mc:Ignorable="d" Background="Gainsboro"
+        Title="Student Management System" Height="385" Width="870">
+    <Grid>
+        
+        <Label Content="Student ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+        <TextBox x:Name="txtStudentId" Text="{Binding SelectedItem.StudentId, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,10,0" Width="150"/>
+
+        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0"/>
+        <TextBox x:Name="txtName" Text="{Binding SelectedItem.Name, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,40,10,0" Width="150"/>
+
+        <Label Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0"/>
+        <TextBox x:Name="txtAddress" Text="{Binding SelectedItem.Address, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,70,10,0" Width="150"/>
+
+        <Label Content="Program:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0"/>
+        <TextBox x:Name="txtProgram" Text="{Binding SelectedItem.Program, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,100,10,0" Width="150"/>
+
+        <Label Content="BirthDate:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,130,0,0"/>
+        <DatePicker x:Name="dpBirthDate" Text="{Binding SelectedItem.BirthDate, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,130,10,0" Width="150"/>
+
+        <Label Content="Total Fees:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,160,0,0"/>
+        <TextBox x:Name="txtTotalFees" Text="{Binding SelectedItem.TotalFees, ElementName=viewStudentData}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,160,10,0" Width="150"/>
+
+        <!-- Buttons for CRUD operations -->
+        <Button Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,10,0" Width="75" Click="Insert_Click"/>
+        <Button Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,200,10,0" Width="75" Click="Update_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,200,10,0" Width="75" Click="Delete_Click"/>
+
+        <Label Content="Student Management System" FontSize="20" Margin="0,305,5,0" Background="LightBlue"/>
+
+        <!-- Display Messages -->
+        <TextBlock Name="txtMessage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,270,10,0" TextWrapping="Wrap"/>
+
+        <DataGrid x:Name="viewStudentData" SelectionChanged="viewStudentData_SelectionChanged" AutoGenerateColumns="False" HorizontalAlignment="Right" Height="275" Width="575" Margin="0,20,25,50" 
+                  ItemsSource="{Binding}" VerticalScrollBarVisibility="Auto" 
+                  RowBackground="Gainsboro" 
+                  VerticalAlignment="Top" GridLinesVisibility="All" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Student ID" Binding="{Binding StudentId, Mode=TwoWay}" Width="90" IsReadOnly="True" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}" Width="120" IsReadOnly="False" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address, Mode=TwoWay}" Width="120" IsReadOnly="False" />
+                <DataGridTextColumn Header="Program" Binding="{Binding Program, Mode=TwoWay}" Width="*" IsReadOnly="False" />
+                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate,Mode=TwoWay, StringFormat='MM/dd/yyyy'}" Width="*" IsReadOnly="True" />
+                <DataGridTextColumn Header="Total Fee" Binding="{Binding TotalFees, Mode=TwoWay,StringFormat='$0.00'}" Width="*" IsReadOnly="False" />
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Window>
